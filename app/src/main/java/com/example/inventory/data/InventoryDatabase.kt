@@ -23,9 +23,7 @@ import androidx.room.RoomDatabase
 // import androidx.room.migration.Migration // Import potrzebny dla ręcznej migracji
 // import androidx.sqlite.db.SupportSQLiteDatabase // Import potrzebny dla ręcznej migracji
 
-/**
- * Główna klasa bazy danych.
- */
+
 @Database(entities = [Item::class], version = 3, exportSchema = false)
 abstract class InventoryDatabase : RoomDatabase() {
 

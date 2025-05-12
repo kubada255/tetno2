@@ -151,7 +151,7 @@ fun ItemInputForm(
             singleLine = true
         )
 
-        // Pole dla Wzrostu
+
         OutlinedTextField(
             value = itemDetails.wzrost,
             onValueChange = { onValueChange(itemDetails.copy(wzrost = it)) },
@@ -167,7 +167,7 @@ fun ItemInputForm(
             singleLine = true
         )
 
-        // Pole dla Tętna
+
         OutlinedTextField(
             value = itemDetails.tetno,
             onValueChange = { onValueChange(itemDetails.copy(tetno = it)) },
@@ -183,7 +183,7 @@ fun ItemInputForm(
             singleLine = true
         )
 
-        // Pole dla Ciśnienia Skurczowego
+
         OutlinedTextField(
             value = itemDetails.cistolic,
             onValueChange = { onValueChange(itemDetails.copy(cistolic = it)) },
@@ -225,7 +225,7 @@ fun ItemInputForm(
 @Preview(showBackground = true)
 @Composable
 private fun ItemEntryScreenPreview() {
-    MaterialTheme { // Upewnij się, że masz zdefiniowany MaterialTheme w swoim projekcie
+    MaterialTheme {
         ItemEntryBody(
             itemUiState = ItemUiState(
                 ItemDetails(
@@ -235,7 +235,7 @@ private fun ItemEntryScreenPreview() {
                     cistolic = "120",
                     diastolic = "80"
                 ),
-                isEntryValid = true // Dla celów podglądu
+                isEntryValid = true
             ),
             onItemValueChange = {},
             onSaveClick = {}
