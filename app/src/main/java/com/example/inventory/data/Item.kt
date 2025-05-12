@@ -26,7 +26,9 @@ import androidx.room.PrimaryKey
 data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val name: String,
-    val price: Double,
-    val quantity: Int
+    val wiek: Int,
+    val wzrost: Int,
+    val tetno: Int,
+    val cistolic: Int,
+    val diastolic: Int
 )

@@ -14,25 +14,35 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="app_name">Inventory</string>
+    <string name="app_name">Zapisy</string>
     <string name="attention">Attention</string>
     <string name="back_button">Back</string>
-    <string name="delete">Delete</string>
+    <string name="delete">Usuń</string>
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="no_item_description">Oops!\nNo items in the inventory.\nTap + to add.</string>
-    <string name="edit_item_title">Edit Item</string>
+    <string name="edit_item_title">Edytuj</string>
     <string name="item">Item</string>
-    <string name="item_detail_title">Item Details</string>
-    <string name="item_entry_title">Add Item</string>
+    <string name="item_detail_title">Szczegóły pomiaru</string>
+    <string name="item_entry_title">Zapisz pomiarm</string>
     <string name="item_name_req">Item Name*</string>
     <string name="item_price_req">Item Price*</string>
     <string name="no">No</string>
     <string name="price">Price</string>
     <string name="quantity_in_stock">Quantity in stock</string>
-    <string name="in_stock">%d in stock</string>
+    <string name="in_stock">Pomiar %d</string>
     <string name="quantity_req">Quantity in Stock*</string>
     <string name="save_action">Save</string>
     <string name="sell">Sell</string>
     <string name="yes">Yes</string>
-    <string name="required_fields">*required fields</string>
+    <string name="required_fields">*wymagane pola</string>
+    <string name="cistolic_pressure">Ciśnienie skurczowe (Cistolic)</string>
+    <string name="diastolic_pressure">Ciśnienie rozkurczowe (Diastolic)</string>
+    <string name="heart_rate">Tętno</string>
+    <string name="age_label">Wiek</string>
+    <string name="height_label">Wzrost (cm)</string>
+     <string name="heart_rate_label">Tętno (bpm)</string>
+<string name="cistolic_label">Ciśnienie skurczowe</string>
+<string name="diastolic_label">Ciśnienie rozkurczowe</string>
+
+
 </resources>
