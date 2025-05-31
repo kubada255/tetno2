@@ -59,7 +59,7 @@ import com.example.inventory.InventoryTopAppBar
 import com.example.inventory.R
 import com.example.inventory.data.Item
 import com.example.inventory.ui.AppViewModelProvider
-
+import androidx.compose.material.icons.filled.Info
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 
@@ -76,6 +76,7 @@ object HomeDestination : NavigationDestination {
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
     navigateToItemUpdate: (Int) -> Unit,
+    navigateToInfo: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -92,19 +93,31 @@ fun HomeScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = navigateToItemEntry,
-                shape = MaterialTheme.shapes.medium,
-                modifier = Modifier
-                    .padding(
-                        end = WindowInsets.safeDrawing.asPaddingValues()
-                            .calculateEndPadding(LocalLayoutDirection.current)
+            Row {
+                FloatingActionButton(
+                    onClick = navigateToInfo,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.padding(end = 256.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = stringResource(R.string.info)
                     )
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(R.string.item_entry_title)
-                )
+                }
+                FloatingActionButton(
+                    onClick = navigateToItemEntry,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier
+                        .padding(
+                            end = WindowInsets.safeDrawing.asPaddingValues()
+                                .calculateEndPadding(LocalLayoutDirection.current)
+                        )
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = stringResource(R.string.item_entry_title)
+                    )
+                }
             }
         },
     ) { innerPadding ->

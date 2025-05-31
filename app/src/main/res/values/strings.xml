@@ -24,12 +24,13 @@
     <string name="item">Item</string>
     <string name="item_detail_title">Szczegóły pomiaru</string>
     <string name="item_entry_title">Zapisz pomiarm</string>
+    <string name="info">Informacje o aplikacji</string>
     <string name="item_name_req">Item Name*</string>
     <string name="item_price_req">Item Price*</string>
     <string name="no">No</string>
     <string name="price">Price</string>
     <string name="quantity_in_stock">Quantity in stock</string>
-    <string name="in_stock">Pomiar %d</string>
+    <string name="in_stock">Pomiar1 %d</string>
     <string name="quantity_req">Quantity in Stock*</string>
     <string name="save_action">Save</string>
     <string name="sell">Sell</string>
@@ -43,6 +44,6 @@
      <string name="heart_rate_label">Tętno (bpm)</string>
 <string name="cistolic_label">Ciśnienie skurczowe</string>
 <string name="diastolic_label">Ciśnienie rozkurczowe</string>
-
-
+<string name="informacje">Jest to aplikacja do mierzenia ciśnienia. Poniżej znajduję się film instruktarzowy</string>
+    <string name="youtube_link">https://www.youtube.com/embed/VKgGjlbTCzA?si=m4caLKG1nrveSm44</string>
 </resources>
