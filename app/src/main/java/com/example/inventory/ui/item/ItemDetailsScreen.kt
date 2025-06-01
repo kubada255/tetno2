@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package com.example.inventory.ui.item
 
@@ -33,7 +18,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -111,12 +95,8 @@ fun ItemDetailsScreen(
     ) { innerPadding ->
         ItemDetailsBody(
             itemDetailsUiState = uiState.value,
-            onSellItem = { viewModel.reduceQuantityByOne() },
+
             onDelete = {
-                // Note: If the user rotates the screen very fast, the operation may get cancelled
-                // and the item may not be deleted from the Database. This is because when config
-                // change occurs, the Activity will be recreated and the rememberCoroutineScope will
-                // be cancelled - since the scope is bound to composition.
                 coroutineScope.launch {
                     viewModel.deleteItem()
                     navigateBack()
@@ -136,7 +116,7 @@ fun ItemDetailsScreen(
 @Composable
 private fun ItemDetailsBody(
     itemDetailsUiState: ItemDetailsUiState,
-    onSellItem: () -> Unit,
+
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -187,6 +167,28 @@ fun ItemDetails(
             verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
         ) {
             ItemDetailsRow(
+                labelResID = R.string.weight,
+                itemDetail = item.waga.toString(),
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen
+                            .padding_medium
+                    )
+                )
+            )
+            ItemDetailsRow(
+                labelResID = R.string.bmi,
+                itemDetail = (item.waga / ((item.wzrost / 100f) * (item.wzrost / 100f))).toString(),
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen
+                            .padding_medium
+                    )
+                )
+            )
+
+
+            ItemDetailsRow(
                 labelResID = R.string.heart_rate,
                 itemDetail = item.tetno.toString(),
                 modifier = Modifier.padding(
@@ -236,7 +238,7 @@ private fun ItemDetailsRow(
 private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
 ) {
-    AlertDialog(onDismissRequest = { /* Do nothing */ },
+    AlertDialog(onDismissRequest = {  },
         title = { Text(stringResource(R.string.attention)) },
         text = { Text(stringResource(R.string.delete_question)) },
         modifier = modifier,
@@ -256,8 +258,17 @@ private fun DeleteConfirmationDialog(
 @Composable
 fun ItemDetailsScreenPreview() {
     InventoryTheme {
-        ItemDetailsBody(ItemDetailsUiState(
-            outOfStock = true, itemDetails = ItemDetails(1, "Pen", "$100", "10")
-        ), onSellItem = {}, onDelete = {})
+        ItemDetails(
+            item = Item(
+                id = 1,
+                wiek = 30,
+                wzrost = 180,
+                tetno = 70,
+                cistolic = 120,
+                diastolic = 80,
+                waga = 75,
+                data = System.currentTimeMillis()
+            )
+        )
     }
 }

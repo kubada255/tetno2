@@ -40,7 +40,7 @@ fun InfoScreen(
                 .padding(padding)
                 .padding(16.dp)
         ) {
-            Text(stringResource(R.string.informacje))
+            Text(stringResource(R.string.info_app))
             Spacer(modifier = Modifier.height(16.dp))
             AndroidView(
                 factory = {

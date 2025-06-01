@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package com.example.inventory.ui.home
 
@@ -62,15 +47,14 @@ import com.example.inventory.ui.AppViewModelProvider
 import androidx.compose.material.icons.filled.Info
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
-
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 object HomeDestination : NavigationDestination {
     override val route = "home"
     override val titleRes = R.string.app_name
 }
 
-/**
- * Entry route for Home screen
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -183,6 +167,9 @@ private fun InventoryList(
 private fun InventoryItem(
     item: Item, modifier: Modifier = Modifier
 ) {
+    val date = Date(item.data)
+    val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+    val formattedDate = format.format(date)
     Card(
         modifier = modifier, elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
@@ -199,14 +186,11 @@ private fun InventoryItem(
                 )
                 Spacer(Modifier.weight(1f))
                 Text(
-                    text = item.wzrost.toString(),
+                    text = formattedDate,
                     style = MaterialTheme.typography.titleMedium
                 )
             }
-            Text(
-                text = item.tetno.toString(),
-                style = MaterialTheme.typography.titleMedium
-            )
+
         }
     }
 }
@@ -216,7 +200,7 @@ private fun InventoryItem(
 fun HomeBodyPreview() {
     InventoryTheme {
         HomeBody(listOf(
-            Item(1, 100, 170, 20,120,70)
+            Item(1, 100, 170, 20,120,70, 70, System.currentTimeMillis()),
         ), onItemClick = {})
     }
 }
@@ -234,7 +218,7 @@ fun HomeBodyEmptyListPreview() {
 fun InventoryItemPreview() {
     InventoryTheme {
         InventoryItem(
-            Item(1, 100, 100, 20,120,70),
+            Item(1, 100, 100, 20,120,70, 70, System.currentTimeMillis()),
         )
     }
 }
