@@ -22,7 +22,7 @@ abstract class InventoryDatabase : RoomDatabase() {
                 Room.databaseBuilder(context, InventoryDatabase::class.java, "item_database")
 
                     .fallbackToDestructiveMigration()
-                    .build()
+                    .build() //tu jest tworzona baza danych
                     .also { Instance = it }
             }
         }
