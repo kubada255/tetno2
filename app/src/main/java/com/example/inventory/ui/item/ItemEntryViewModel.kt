@@ -77,6 +77,7 @@ fun Item.toItemUiState(isEntryValid: Boolean = false): ItemUiState = ItemUiState
 fun Item.toItemDetails(): ItemDetails = ItemDetails(
     id = id,
     wiek= wiek.toString(),
+    waga = waga.toString(),//tutaj był błąd, bo waga nie była konwertowana na String
     wzrost=wzrost.toString(),
     tetno = tetno.toString(),
     cistolic = cistolic.toString(),
