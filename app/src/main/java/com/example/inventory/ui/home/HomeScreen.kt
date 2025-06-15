@@ -2,6 +2,8 @@
 package com.example.inventory.ui.home
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -77,11 +79,20 @@ fun HomeScreen(
             )
         },
         floatingActionButton = {
-            Row {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = WindowInsets.safeDrawing.asPaddingValues()
+                            .calculateStartPadding(LocalLayoutDirection.current) + 16.dp,
+                        end = WindowInsets.safeDrawing.asPaddingValues()
+                            .calculateEndPadding(LocalLayoutDirection.current) + 16.dp
+                    ),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 FloatingActionButton(
                     onClick = navigateToInfo,
                     shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.padding(end = 256.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Info,
@@ -91,11 +102,6 @@ fun HomeScreen(
                 FloatingActionButton(
                     onClick = navigateToItemEntry,
                     shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier
-                        .padding(
-                            end = WindowInsets.safeDrawing.asPaddingValues()
-                                .calculateEndPadding(LocalLayoutDirection.current)
-                        )
                 ) {
                     Icon(
                         imageVector = Icons.Default.Add,
