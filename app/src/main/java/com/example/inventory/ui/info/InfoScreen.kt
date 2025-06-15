@@ -46,7 +46,12 @@ fun InfoScreen(
                 factory = {
                     WebView(it).apply {
                         webViewClient = WebViewClient()
-                        settings.javaScriptEnabled= true
+                        webChromeClient = android.webkit.WebChromeClient()
+                        settings.javaScriptEnabled = true
+                        settings.domStorageEnabled = true
+                        settings.mediaPlaybackRequiresUserGesture = false
+                        settings.mediaPlaybackRequiresUserGesture = false
+                        settings.setLoadsImagesAutomatically(true)
                         loadUrl(youtubeUrl)
                     }
                 },
