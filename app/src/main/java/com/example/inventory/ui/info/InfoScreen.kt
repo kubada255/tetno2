@@ -16,12 +16,19 @@ import androidx.compose.material.icons.filled.ArrowBack
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.ui.viewinterop.AndroidView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+
 @Composable
 fun InfoScreen(
     navigateBack: () -> Unit
 ) {
     val context = LocalContext.current
     val youtubeUrl = stringResource(R.string.youtube_link)
+    // Wyciągnij ID filmu z URL
+    val videoId = "VKgGjlbTCzA" // ID z twojego linku
+
     Scaffold(
         topBar = {
             @OptIn(ExperimentalMaterial3Api::class)
@@ -29,7 +36,7 @@ fun InfoScreen(
                 title = { Text(stringResource(R.string.info)) },
                 navigationIcon = {
                     IconButton(onClick = navigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Default.ArrowBack, contentDescription = null)
                     }
                 }
             )
@@ -42,25 +49,23 @@ fun InfoScreen(
         ) {
             Text(stringResource(R.string.info_app))
             Spacer(modifier = Modifier.height(16.dp))
-            AndroidView(
-                factory = {
-                    WebView(it).apply {
-                    webViewClient = WebViewClient()
-                    webChromeClient = android.webkit.WebChromeClient() // Obsługa multimediów
-                    settings.javaScriptEnabled = true
-                    settings.domStorageEnabled = true
-                    settings.mediaPlaybackRequiresUserGesture = false
-                    settings.setLoadsImagesAutomatically(true) // Automatyczne ładowanie obrazów
-                        setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
 
-                        loadUrl(youtubeUrl)
-                }
+            AndroidView(
+                factory = { context ->
+                    YouTubePlayerView(context).apply {
+                        addYouTubePlayerListener(
+                            object : AbstractYouTubePlayerListener() {
+                                override fun onReady(youTubePlayer: YouTubePlayer) {
+                                    youTubePlayer.loadVideo(videoId, 0f)//dziękuje pierfrancescosoffritti za pomoc
+                                }
+                            }
+                        )
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
             )
-
         }
     }
 }

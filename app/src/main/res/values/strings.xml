@@ -26,7 +26,7 @@
 <string name="cistolic_label">Ciśnienie skurczowe</string>
 <string name="diastolic_label">Ciśnienie rozkurczowe</string>
 <string name="info_app">Jest to aplikacja do mierzenia ciśnienia. Poniżej znajduję się film instruktarzowy</string>
-    <string name="youtube_link">https://www.youtube.com/embed/VKgGjlbTCzA?si=m4caLKG1nrveSm44</string>
+    <string name="youtube_link">VKgGjlbTCzA</string>
 <string name="weight">Waga (kg)</string>
     <string name="bmi">BMI</string>
 </resources>
