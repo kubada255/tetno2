@@ -45,15 +45,16 @@ fun InfoScreen(
             AndroidView(
                 factory = {
                     WebView(it).apply {
-                        webViewClient = WebViewClient()
-                        webChromeClient = android.webkit.WebChromeClient()
-                        settings.javaScriptEnabled = true
-                        settings.domStorageEnabled = true
-                        settings.mediaPlaybackRequiresUserGesture = false
-                        settings.mediaPlaybackRequiresUserGesture = false
-                        settings.setLoadsImagesAutomatically(true)
+                    webViewClient = WebViewClient()
+                    webChromeClient = android.webkit.WebChromeClient() // Obsługa multimediów
+                    settings.javaScriptEnabled = true
+                    settings.domStorageEnabled = true
+                    settings.mediaPlaybackRequiresUserGesture = false
+                    settings.setLoadsImagesAutomatically(true) // Automatyczne ładowanie obrazów
+                        setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
+
                         loadUrl(youtubeUrl)
-                    }
+                }
                 },
                 modifier = Modifier
                     .fillMaxWidth()

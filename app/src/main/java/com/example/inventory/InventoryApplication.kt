@@ -15,4 +15,4 @@ class InventoryApplication : Application() {
         super.onCreate()
         container = AppDataContainer(this)
     }
-}
+}//tu się dzieje magia
